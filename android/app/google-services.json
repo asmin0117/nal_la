@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "861092144057",
+    "project_id": "nalla-project",
+    "storage_bucket": "nalla-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861092144057:android:894b82b22e967829a48c68",
+        "android_client_info": {
+          "package_name": "com.nal_la.nal_la"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861092144057-cr7dq2fhc5n9r5ome0fjchbnemcov3rg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nal_la.nal_la",
+            "certificate_hash": "0a5d4725b611198b2e52dd5b4a727e78f18cab87"
+          }
+        },
+        {
+          "client_id": "861092144057-bi9n4aaib1uc9sdkiiobkqebrg2h1h0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4-OwfcXdI7bJsZfqnZxVP4cY_0QlaTtg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861092144057-bi9n4aaib1uc9sdkiiobkqebrg2h1h0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
