@@ -5,6 +5,7 @@ import 'package:nal_la/src/controller/kakao_login_controller.dart';
 class LoginWidget extends StatelessWidget {
   LoginWidget({var key}) : super(key: key);
   KakaoLoginController controller = Get.put(KakaoLoginController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,6 +15,7 @@ class LoginWidget extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
               onPressed: controller.signwithKakao,
