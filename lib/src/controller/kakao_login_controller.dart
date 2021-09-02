@@ -10,6 +10,7 @@ class KakaoLoginController extends GetxController {
   static KakaoLoginController get to => Get.find();
 
   String kakaoRestAPIKey = dotenv.get('KAKAO_REST_API');
+  String serverURL = dotenv.get('SERVER_URL');
 
   Future<UserCredential?> signwithKakao() async {
     final clientState = Uuid().v4();
@@ -18,34 +19,27 @@ class KakaoLoginController extends GetxController {
       'response_type': 'code',
       'client_id': '$kakaoRestAPIKey',
       'response_mode': 'form_post',
-      'redirect_url':
-          'https://desert-slash-height.glitch.me/callbacks/kakao/sign_in',
+      'redirect_uri':
+          '$serverURL/callbacks/kakao/sign_in',
       'state': clientState,
     });
 
     final result = await FlutterWebAuth.authenticate(
         url: url.toString(), callbackUrlScheme: "webauthcallback");
 
-    final body = Uri.parse(result).queryParameters;
-    print("==============body 출력==============");
-    print(body);
+    final code = Uri.parse(result).queryParameters['code'];
 
     final tokenUrl = Uri.https('kauth.kakao.com', '/oauth/token', {
       'grant_type': 'authorization_code',
       'client_id': '$kakaoRestAPIKey',
-      'redirect_url':
-          'https://desert-slash-height.glitch.me/callbacks/kakao/sign_in',
-      'code': body["code"],
+      'redirect_uri':
+          '$serverURL/callbacks/kakao/sign_in',
+      'code': code,
     });
-    var response = await http.post(tokenUrl);
-    Map<String, dynamic> accessTokenResult = json.decode(response.body);
-    var responseCustomToken = await http.post(
-        "https://desert-slash-height.glitch.me/callbacks/kakao/token" as Uri,
-        body: {"accessToken": accessTokenResult['access_token']});
+    final tokenResult = await http.post(tokenUrl);
+    final accessToken = json.decode(tokenResult.body)['access_token'];
+    var response = await http.get(Uri.parse('$serverURL/callbacks/kakao/token?accessToken=$accessToken'));
 
-    print("==============accessTokenResult['access_token']출력==============");
-    print(accessTokenResult['access_token']);
-
-    return await FirebaseAuth.instance.signInWithCustomToken(responseCustomToken.body);
+    return await FirebaseAuth.instance.signInWithCustomToken(response.body);
   }
 }
