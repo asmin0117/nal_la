@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nal_la/src/controller/kakao_login_controller.dart';
 
 class LoginWidget extends StatelessWidget {
-  const LoginWidget({var key}) : super(key: key);
-
+  LoginWidget({var key}) : super(key: key);
+  KakaoLoginController controller = Get.put(KakaoLoginController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,9 +16,9 @@ class LoginWidget extends StatelessWidget {
         child: Column(
           children: [
             TextButton(
-              onPressed: signwithKakao,
+              onPressed: controller.signwithKakao,
               child: Image.asset(
-                "assets/kakao_login/ko/kakao_login_medium_narrow.png",
+                "assets/kakao_login/ko/kakao_login_medium.png",
               ),
             )
           ],
