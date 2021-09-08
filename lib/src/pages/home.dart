@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nal_la/src/pages/login.dart';
 
 class Home extends StatelessWidget {
