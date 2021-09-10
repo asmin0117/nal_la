@@ -25,6 +25,12 @@ class Home extends StatelessWidget {
                     onPressed: FirebaseAuth.instance.signOut,
                     child: Text("로그아웃"),
                   ),
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed("/nameAuth");
+                    },
+                    child: Text("폰인증"),
+                  ),
                 ],
               ),
             );
