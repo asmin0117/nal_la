@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:nal_la/src/controller/appbar_controller.dart';
 import 'package:nal_la/src/pages/login.dart';
 
 class Home extends StatefulWidget {
@@ -9,18 +10,18 @@ class Home extends StatefulWidget {
 
   @override
   _HomeState createState() => _HomeState();
+
 }
 
 class _HomeState extends State<Home> {
+
+  AppBarWidget appBarWidget = Get.put(AppBarWidget());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(onPressed: (){}, icon: SvgPicture.asset("assets/svg/bell.svg", width: 22,))
-            ],
-          ),
+          appBar: appBarWidget.appbar(''),
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
@@ -42,6 +43,9 @@ class _HomeState extends State<Home> {
                     },
                     child: Text("폰인증"),
                   ),
+                  TextButton(onPressed: (){
+                    Get.toNamed("/contractList");
+                  }, child: Text("요청목록"))
                 ],
               ),
             );

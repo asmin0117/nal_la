@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:nal_la/src/app.dart';
+import 'package:nal_la/src/pages/contract_list.dart';
 import 'package:nal_la/src/pages/home.dart';
 import 'package:nal_la/src/pages/join/name_auth.dart';
 import 'package:nal_la/src/pages/join/phone_auth.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/", page: () => Home(), transition: Transition.fade),
         GetPage(name: "/nameAuth", page: () => NameAuthWidget(), transition: Transition.fade),
+        GetPage(name: "/contractList", page: () => ContractList(), transition: Transition.fade),
       ],
     );
   }

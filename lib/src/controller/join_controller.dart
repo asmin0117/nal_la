@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nal_la/values/values.dart';
 
-class ButtonController extends GetView<ButtonController> {
+class JoinController extends GetView<JoinController> {
 
-  String title = '';
-  String text = '';
-
-
+  final String title = '';
+  final String text = '';
 
   @override
   Widget build(BuildContext context) {
