@@ -28,15 +28,6 @@ class _NameAuthState extends State<NameAuthWidget> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            Container(
-              height: 1,
-              margin: EdgeInsets.only(top: 2),
-              decoration: BoxDecoration(
-                color: AppColors.accentElement,
-                border: Border.fromBorderSide(Borders.secondaryBorder),
-              ),
-              child: Container(),
-            ),
             Padding(
               padding: const EdgeInsets.all(30),
               child: Row(
@@ -141,23 +132,32 @@ class _NameAuthState extends State<NameAuthWidget> {
                   ),
                 ),
 
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
                     }
                   },
-                  child: Text(
-                    "확인",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColors.secondaryText,
-                      fontFamily: "Noto Sans CJK KR",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                      letterSpacing: 0.6,
-                    ),
+                  child: Container(
+                      width: 347,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: AppColors.secondaryElement,
+                        border: Border.fromBorderSide(Borders.primaryBorder),
+                        borderRadius: Radii.k9pxRadius,
+                      ),
+                      child: Text(
+                        "확인",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.secondaryText,
+                          fontFamily: "Noto Sans CJK KR",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          letterSpacing: 0.6,
+                        ),
+                      ),
                   ),
                 )
               ],

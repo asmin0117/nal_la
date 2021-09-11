@@ -3,13 +3,19 @@ import 'package:get/get.dart';
 import 'package:nal_la/values/values.dart';
 
 class ButtonController extends GetView<ButtonController> {
+
+  String title = '';
+  String text = '';
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
-            '본인 인증',
+            title,
             textAlign: TextAlign.left,
             style: TextStyle(
               color: AppColors.primaryText,
@@ -35,7 +41,7 @@ class ButtonController extends GetView<ButtonController> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 50),
-                  Text("본인 인증을 위해\n필요해요.",
+                  Text(text,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         color: AppColors.primaryText,
@@ -48,6 +54,47 @@ class ButtonController extends GetView<ButtonController> {
               ),
             ),
             SizedBox(height: 5),
+            Spacer(),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: 347,
+                height: 60,
+                margin: EdgeInsets.only(bottom: 56),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        width: 347,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: AppColors.secondaryElement,
+                          border: Border.fromBorderSide(Borders.primaryBorder),
+                          borderRadius: Radii.k9pxRadius,
+                        ),
+                        child: Container(),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 12,
+                      child: Text(
+                        "확인",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.secondaryText,
+                          fontFamily: "Noto Sans CJK KR",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          letterSpacing: 0.6,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ]),
         ));
   }

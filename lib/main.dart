@@ -13,7 +13,6 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Noto Sans CJK KR",
         scaffoldBackgroundColor: AppColors.primaryBackground,
         appBarTheme: AppBarTheme(
-          elevation: 0.0
+          elevation: 1
         )
       ),
       home: App(),

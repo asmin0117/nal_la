@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nal_la/src/controller/bottom_controller.dart';
+import 'package:nal_la/src/controller/bottom_nav_controller.dart';
 
 class BottomNav extends GetView<BottomController> {
   const BottomNav({var key}) : super(key: key);

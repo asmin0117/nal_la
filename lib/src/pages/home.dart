@@ -1,15 +1,26 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nal_la/src/pages/login.dart';
 
-class Home extends StatelessWidget {
-  const Home({var key}) : super(key: key);
+class Home extends StatefulWidget {
+  Home({var key}) : super(key: key);
 
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            actions: [
+              IconButton(onPressed: (){}, icon: SvgPicture.asset("assets/svg/bell.svg", width: 22,))
+            ],
+          ),
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
