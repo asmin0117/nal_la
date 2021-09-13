@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nal_la/src/controller/appbar_controller.dart';
-import 'package:nal_la/values/colors.dart';
+import 'package:nal_la/values/values.dart';
 
 class ContractList extends StatefulWidget {
   ContractList({var key}) : super(key: key);
@@ -24,8 +25,8 @@ class _ContractListState extends State<ContractList> {
         "sender": "수민수산",
         "product": "참치",
         "weight": "2.5톤",
-        "origin": "울산항로 38-1",
-        "destination": "노량진 수산시장 202호 수민이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.07 6am 이전",
         "payment": "350000"
       },
@@ -33,8 +34,8 @@ class _ContractListState extends State<ContractList> {
         "sender": "석중수산",
         "product": "광어",
         "weight": "1.5톤",
-        "origin": "울산항로 36-3",
-        "destination": "노량진 수산시장 502호 색종이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.05 6am 이전",
         "payment": "150000"
       },
@@ -42,8 +43,8 @@ class _ContractListState extends State<ContractList> {
         "sender": "수민수산",
         "product": "참치",
         "weight": "2.5톤",
-        "origin": "울산항로 38-1",
-        "destination": "노량진 수산시장 202호 수민이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.07 6am 이전",
         "payment": "350000"
       },
@@ -51,8 +52,8 @@ class _ContractListState extends State<ContractList> {
         "sender": "석중수산",
         "product": "광어",
         "weight": "1.5톤",
-        "origin": "울산항로 36-3",
-        "destination": "노량진 수산시장 502호 색종이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.05 6am 이전",
         "payment": "150000"
       },
@@ -60,8 +61,8 @@ class _ContractListState extends State<ContractList> {
         "sender": "수민수산",
         "product": "참치",
         "weight": "2.5톤",
-        "origin": "울산항로 38-1",
-        "destination": "노량진 수산시장 202호 수민이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.07 6am 이전",
         "payment": "350000"
       },
@@ -69,12 +70,18 @@ class _ContractListState extends State<ContractList> {
         "sender": "석중수산",
         "product": "광어",
         "weight": "1.5톤",
-        "origin": "울산항로 36-3",
-        "destination": "노량진 수산시장 502호 색종이네",
+        "origin": "서울",
+        "destination": "부산",
         "deadline": "09.05 6am 이전",
         "payment": "150000"
       },
     ];
+  }
+
+  final won = new NumberFormat("#,###", "ko_KR");
+  String calcStringToWon(String priceString) {
+
+    return "${won.format(int.parse(priceString))}원~";
   }
 
   @override
@@ -83,24 +90,55 @@ class _ContractListState extends State<ContractList> {
         child: Scaffold(
       appBar: appBarWidget.appbar('요청목록'),
       body: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           itemBuilder: (BuildContext _context, int index) {
             return Container(
+                padding: const EdgeInsets.all(10),
                 child: Row(
-              children: [
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          "${contracts[index]["origin"]} → ${contracts[index]["destination"]}"),
-                      Text(
-                          "${contracts[index]["deadline"]} | ${contracts[index]["weight"]}")
-                    ],
-                  ),
-                ),
-
-              ],
-            ));
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 90,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${contracts[index]["origin"]} → ${contracts[index]["destination"]}",
+                              style: TextStyle(
+                                fontFamily: "Noto Sans CJK KR",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Text(
+                              "${contracts[index]["deadline"]} | ${contracts[index]["weight"]}",
+                              style: TextStyle(color: AppColors.accentText),
+                            ),
+                            Expanded(
+                                child: Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    calcStringToWon(contracts[index]["payment"].toString()),
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(
+                                      fontFamily: "Noto Sans CJK KR",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ));
           },
           separatorBuilder: (BuildContext _context, int index) {
             return Container(

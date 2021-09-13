@@ -10,57 +10,81 @@ class TruckType extends StatefulWidget {
   _TruckTypeState createState() => _TruckTypeState();
 }
 
-_buttonOn(String title) {
-  return ElevatedButton(
-    onPressed: () {
-      _buttonOff(title);
-    },
-    child: Text(
-      title,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: "Noto Sans CJK KR",
-        fontWeight: FontWeight.w400,
-        color: Colors.white,
-        fontSize: 26,
-      ),
-    ),
-    style: ElevatedButton.styleFrom(
-      elevation: 0,
-      fixedSize: Size(160, 122),
-      primary: AppColors.secondaryElement,
-    ),
-  );
-}
-
-_buttonOff(String title) {
-  return OutlinedButton(
-    onPressed: () {
-      _buttonOn(title);
-    },
-    child: Text(
-      title,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: "Noto Sans CJK KR",
-        fontWeight: FontWeight.w400,
-        color: Colors.black,
-        fontSize: 26,
-      ),
-    ),
-    style: OutlinedButton.styleFrom(
-      elevation: 0,
-      fixedSize: Size(160, 122),
-      primary: AppColors.secondaryElement,
-    ),
-  );
-}
+// _buttonOn(String title) {
+//   return ElevatedButton(
+//     onPressed: () {
+//       _buttonOff(title);
+//     },
+//     child: Text(
+//       title,
+//       textAlign: TextAlign.center,
+//       style: TextStyle(
+//         fontFamily: "Noto Sans CJK KR",
+//         fontWeight: FontWeight.w400,
+//         color: Colors.white,
+//         fontSize: 26,
+//       ),
+//     ),
+//     style: ElevatedButton.styleFrom(
+//       elevation: 0,
+//       fixedSize: Size(160, 122),
+//       primary: AppColors.secondaryElement,
+//     ),
+//   );
+// }
+//
+// _buttonOff(String title) {
+//   return OutlinedButton(
+//     onPressed: () {
+//       _buttonOn(title);
+//     },
+//     child: Text(
+//       title,
+//       textAlign: TextAlign.center,
+//       style: TextStyle(
+//         fontFamily: "Noto Sans CJK KR",
+//         fontWeight: FontWeight.w400,
+//         color: Colors.black,
+//         fontSize: 26,
+//       ),
+//     ),
+//     style: OutlinedButton.styleFrom(
+//       elevation: 0,
+//       fixedSize: Size(160, 122),
+//       primary: AppColors.secondaryElement,
+//     ),
+//   );
+// }
 
 class _TruckTypeState extends State<TruckType> {
-  //bool _pressed = true;
-  String truckType = '';
+  bool _pressed = true;
 
-
+  TextButton _button(String title) {
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          _pressed = !_pressed;
+        });
+      },
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontFamily: "Noto Sans CJK KR",
+          fontWeight: FontWeight.w400,
+          fontSize: 26,
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        fixedSize: Size(160, 122),
+          primary: _pressed
+              ? AppColors.primaryBackground
+              : AppColors.secondaryElement,
+          textStyle: _pressed
+              ? TextStyle(color: Colors.black,)
+              : TextStyle(color: Colors.white,)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +121,11 @@ class _TruckTypeState extends State<TruckType> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buttonOff("카고"),
+                  _button("카고"),
                   SizedBox(),
-                  _buttonOff("호루"),
+                  _button("호루"),
                   SizedBox(),
-                  _buttonOff("리프트")
+                  _button("리프트")
                 ],
               ),
             ),
