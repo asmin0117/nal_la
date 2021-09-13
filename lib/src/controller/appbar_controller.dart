@@ -10,6 +10,7 @@ class AppBarWidget extends GetxService {
 
   PreferredSizeWidget appbar(String title) {
     return AppBar(
+
       title: Text(
         this.title = title,
         textAlign: TextAlign.left,

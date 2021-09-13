@@ -10,18 +10,16 @@ class Home extends StatefulWidget {
 
   @override
   _HomeState createState() => _HomeState();
-
 }
 
 class _HomeState extends State<Home> {
-
   AppBarWidget appBarWidget = Get.put(AppBarWidget());
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: appBarWidget.appbar(''),
+      //appBar: appBarWidget.appbar(''),
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
@@ -43,9 +41,11 @@ class _HomeState extends State<Home> {
                     },
                     child: Text("폰인증"),
                   ),
-                  TextButton(onPressed: (){
-                    Get.toNamed("/contractList");
-                  }, child: Text("요청목록"))
+                  TextButton(
+                      onPressed: () {
+                        Get.toNamed("/contractList");
+                      },
+                      child: Text("요청목록"))
                 ],
               ),
             );

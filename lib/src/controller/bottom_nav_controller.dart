@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nal_la/src/components/bottombar.dart';
 
-enum RouteName { ContractList, MyContract, Community, Message, MyPage }
+enum RouteName { MyContract, ContractList, Community, Message, MyPage }
 
 class BottomController extends GetxService {
   //앱이 꺼지기 전까지 계속 사용해야 함. GetxService를 상속받는 것이 적절

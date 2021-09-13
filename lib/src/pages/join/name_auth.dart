@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nal_la/values/values.dart';
 
 class NameAuthWidget extends StatefulWidget {
@@ -131,33 +132,31 @@ class _NameAuthState extends State<NameAuthWidget> {
                     ),
                   ),
                 ),
-
                 TextButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')));
+                      Get.toNamed('/truckType');
                     }
                   },
                   child: Container(
-                      width: 347,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: AppColors.secondaryElement,
-                        border: Border.fromBorderSide(Borders.primaryBorder),
-                        borderRadius: Radii.k9pxRadius,
+                    width: 347,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: AppColors.secondaryElement,
+                      border: Border.fromBorderSide(Borders.primaryBorder),
+                      borderRadius: Radii.k9pxRadius,
+                    ),
+                    child: Text(
+                      "확인",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppColors.secondaryText,
+                        fontFamily: "Noto Sans CJK KR",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                        letterSpacing: 0.6,
                       ),
-                      child: Text(
-                        "확인",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontFamily: "Noto Sans CJK KR",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20,
-                          letterSpacing: 0.6,
-                        ),
-                      ),
+                    ),
                   ),
                 )
               ],
