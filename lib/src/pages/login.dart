@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:nal_la/src/controller/kakao_login_controller.dart';
 import 'package:nal_la/values/colors.dart';
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
   LoginWidget({var key}) : super(key: key);
-  KakaoLoginController controller = Get.put(KakaoLoginController());
 
+  @override
+  _LoginState createState() => _LoginState();
   // @override
   // Widget build(BuildContext context) {
   //   return SafeArea(
@@ -29,6 +30,12 @@ class LoginWidget extends StatelessWidget {
   //     ),
   //   ));
   // }
+}
+
+
+class _LoginState extends State<LoginWidget> {
+
+  KakaoLoginController controller = Get.put(KakaoLoginController());
 
   @override
   Widget build(BuildContext context) {
