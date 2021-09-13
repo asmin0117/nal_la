@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nal_la/src/controller/appbar_controller.dart';
 
 class MyContract extends StatelessWidget {
-  const MyContract({var key}) : super(key: key);
-
+  MyContract({var key}) : super(key: key);
+  AppBarWidget appBarWidget = Get.put(AppBarWidget());
   @override
   Widget build(BuildContext context) {
     return SafeArea(

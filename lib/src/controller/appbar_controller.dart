@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nal_la/values/values.dart';
 
@@ -23,8 +22,8 @@ class AppBarWidget extends GetxService {
       actions: [
         IconButton(
             onPressed: () {},
-            icon: SvgPicture.asset(
-              "assets/svg/bell.svg",
+            icon: Image.asset(
+              "assets/icons/bell.png",
               width: 22,
             ))
       ],

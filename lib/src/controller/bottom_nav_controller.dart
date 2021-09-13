@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:nal_la/src/components/bottombar.dart';
 
 enum RouteName { MyContract, ContractList, Community, Message, MyPage }
 
