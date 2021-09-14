@@ -70,7 +70,7 @@ class _NameAuthState extends State<NameAuthWidget> {
                   height: 44,
                   margin: EdgeInsets.only(left: 18, top: 2, right: 18),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryElement,
+                    color: AppColors.primaryBackground,
                     border: Border.fromBorderSide(Borders.primaryBorder),
                     borderRadius: BorderRadius.all(Radius.circular(0.9)),
                   ),
@@ -112,7 +112,7 @@ class _NameAuthState extends State<NameAuthWidget> {
                   height: 44,
                   margin: EdgeInsets.only(left: 18, top: 2, right: 18),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryElement,
+                    color: AppColors.primaryBackground,
                     border: Border.fromBorderSide(Borders.primaryBorder),
                     borderRadius: BorderRadius.all(Radius.circular(0.9)),
                   ),

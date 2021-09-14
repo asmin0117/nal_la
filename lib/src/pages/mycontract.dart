@@ -98,10 +98,9 @@ class _MyContractState extends State<MyContract> {
             Text(
               "삭제",
               style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontFamily: "Noto Sans CJK KR"
-              ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Noto Sans CJK KR"),
               textAlign: TextAlign.right,
             ),
             SizedBox(
@@ -113,7 +112,6 @@ class _MyContractState extends State<MyContract> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +126,7 @@ class _MyContractState extends State<MyContract> {
                 direction: DismissDirection.endToStart,
                 background: slideLeft(),
                 child: Card(
+                    elevation: 0,
                     shape:
                         RoundedRectangleBorder(borderRadius: Radii.k9pxRadius),
                     margin: const EdgeInsets.all(5),

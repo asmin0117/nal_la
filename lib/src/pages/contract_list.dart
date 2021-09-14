@@ -79,8 +79,8 @@ class _ContractListState extends State<ContractList> {
   }
 
   final won = new NumberFormat("#,###", "ko_KR");
-  String calcStringToWon(String priceString) {
 
+  String calcStringToWon(String priceString) {
     return "${won.format(int.parse(priceString))}원~";
   }
 
@@ -88,16 +88,22 @@ class _ContractListState extends State<ContractList> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: appBarWidget.appbar('요청목록'),
-      body: ListView.separated(
+      appBar: appBarWidget.appbar('운송 계약'),
+      body: ListView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           itemBuilder: (BuildContext _context, int index) {
-            return Container(
-                padding: const EdgeInsets.all(10),
+            return Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(borderRadius: Radii.k9pxRadius),
+                margin: const EdgeInsets.all(5),
                 child: Row(
                   children: [
                     Expanded(
                       child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.accentText),
+                            borderRadius: Radii.k9pxRadius),
+                        padding: const EdgeInsets.all(8),
                         height: 90,
                         width: MediaQuery.of(context).size.width,
                         child: Column(
@@ -122,7 +128,8 @@ class _ContractListState extends State<ContractList> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    calcStringToWon(contracts[index]["payment"].toString()),
+                                    calcStringToWon(
+                                        contracts[index]["payment"].toString()),
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: "Noto Sans CJK KR",
@@ -140,13 +147,7 @@ class _ContractListState extends State<ContractList> {
                   ],
                 ));
           },
-          separatorBuilder: (BuildContext _context, int index) {
-            return Container(
-              height: 1,
-              color: AppColors.secondaryElement,
-            );
-          },
-          itemCount: 6),
+          itemCount: contracts.length),
     ));
   }
 }

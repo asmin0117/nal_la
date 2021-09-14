@@ -10,81 +10,129 @@ class TruckType extends StatefulWidget {
   _TruckTypeState createState() => _TruckTypeState();
 }
 
-// _buttonOn(String title) {
-//   return ElevatedButton(
-//     onPressed: () {
-//       _buttonOff(title);
-//     },
-//     child: Text(
-//       title,
-//       textAlign: TextAlign.center,
-//       style: TextStyle(
-//         fontFamily: "Noto Sans CJK KR",
-//         fontWeight: FontWeight.w400,
-//         color: Colors.white,
-//         fontSize: 26,
-//       ),
-//     ),
-//     style: ElevatedButton.styleFrom(
-//       elevation: 0,
-//       fixedSize: Size(160, 122),
-//       primary: AppColors.secondaryElement,
-//     ),
-//   );
-// }
-//
-// _buttonOff(String title) {
-//   return OutlinedButton(
-//     onPressed: () {
-//       _buttonOn(title);
-//     },
-//     child: Text(
-//       title,
-//       textAlign: TextAlign.center,
-//       style: TextStyle(
-//         fontFamily: "Noto Sans CJK KR",
-//         fontWeight: FontWeight.w400,
-//         color: Colors.black,
-//         fontSize: 26,
-//       ),
-//     ),
-//     style: OutlinedButton.styleFrom(
-//       elevation: 0,
-//       fixedSize: Size(160, 122),
-//       primary: AppColors.secondaryElement,
-//     ),
-//   );
-// }
+_buttonOn(String title) {
+  return ElevatedButton(
+    onPressed: () {
+      _buttonOff(title);
+    },
+    child: Text(
+      title,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontFamily: "Noto Sans CJK KR",
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
+        fontSize: 26,
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      elevation: 0,
+      fixedSize: Size(160, 122),
+      primary: AppColors.secondaryElement,
+    ),
+  );
+}
+
+_buttonOff(String title) {
+  return OutlinedButton(
+    onPressed: () {
+      _buttonOn(title);
+    },
+    child: Text(
+      title,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontFamily: "Noto Sans CJK KR",
+        fontWeight: FontWeight.w400,
+        color: Colors.black,
+        fontSize: 26,
+      ),
+    ),
+    style: OutlinedButton.styleFrom(
+      elevation: 0,
+      fixedSize: Size(160, 122),
+      primary: AppColors.secondaryElement,
+    ),
+  );
+}
 
 class _TruckTypeState extends State<TruckType> {
   bool _pressed = true;
 
-  TextButton _button(String title) {
-    return TextButton(
+  // _button(String title) {
+  //   return ElevatedButton(
+  //       onPressed: () {},
+  //       style: ButtonStyle(
+  //         backgroundColor: MaterialStateProperty.resolveWith<Color>(
+  //           (Set<MaterialState> states) {
+  //             if (states.contains(MaterialState.pressed)) return AppColors.secondaryElement;
+  //             return Colors.white;
+  //           },
+  //         ),
+  //       ),
+  //       child: Text(title,
+  //           textAlign: TextAlign.center,
+  //           style: TextStyle(
+  //             color: Colors.black,
+  //             fontFamily: "Noto Sans CJK KR",
+  //             fontWeight: FontWeight.w400,
+  //             fontSize: 26,
+  //           )));
+  // }
+
+  _button(String title) {
+    return ElevatedButton(
       onPressed: () {
-        setState(() {
-          _pressed = !_pressed;
-        });
+        _pressed = !_pressed;
+        ElevatedButton.styleFrom(
+            textStyle: TextStyle(color: Colors.white),
+            primary: AppColors.secondaryElement);
       },
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
+      child: Text(title),
+      style: ElevatedButton.styleFrom(
+        primary: AppColors.primaryBackground,
+        elevation: 0,
+        textStyle: TextStyle(
+          color: Colors.black,
           fontFamily: "Noto Sans CJK KR",
           fontWeight: FontWeight.w400,
           fontSize: 26,
         ),
       ),
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(160, 122),
-          primary: _pressed
-              ? AppColors.primaryBackground
-              : AppColors.secondaryElement,
-          textStyle: _pressed
-              ? TextStyle(color: Colors.black,)
-              : TextStyle(color: Colors.white,)),
     );
   }
+
+  // ElevatedButton _button(String title) {
+  //   return new ElevatedButton(
+  //     onPressed: () {
+  //       setState(() {
+  //         _pressed = !_pressed;
+  //       });
+  //     },
+  //     child: Text(
+  //       title,
+  //       textAlign: TextAlign.center,
+  //       style: TextStyle(
+  //         color: Colors.black,
+  //         fontFamily: "Noto Sans CJK KR",
+  //         fontWeight: FontWeight.w400,
+  //         fontSize: 26,
+  //       ),
+  //     ),
+  //     style: ElevatedButton.styleFrom(
+  //         fixedSize: Size(160, 122),
+  //         primary: _pressed
+  //             ? AppColors.primaryBackground
+  //             : AppColors.secondaryElement,
+  //         textStyle: _pressed
+  //             ? TextStyle(
+  //                 color: Colors.black,
+  //               )
+  //             : TextStyle(
+  //                 color: Colors.white,
+  //               )),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +164,7 @@ class _TruckTypeState extends State<TruckType> {
               ),
             ),
             Container(
-              height: 122,
+              //height: 122,
               margin: EdgeInsets.only(left: 23, top: 20, right: 23),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +173,7 @@ class _TruckTypeState extends State<TruckType> {
                   SizedBox(),
                   _button("호루"),
                   SizedBox(),
-                  _button("리프트")
+                  _button("리프트"),
                 ],
               ),
             ),
