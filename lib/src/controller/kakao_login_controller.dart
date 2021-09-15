@@ -20,7 +20,7 @@ class KakaoLoginController extends GetxController {
       'client_id': '$kakaoRestAPIKey',
       'response_mode': 'form_post',
       'redirect_uri':
-          '$serverURL/callbacks/kakao/sign_in',
+          '$serverURL/callbacks/kakao/login',
       'state': clientState,
     });
 
@@ -33,7 +33,7 @@ class KakaoLoginController extends GetxController {
       'grant_type': 'authorization_code',
       'client_id': '$kakaoRestAPIKey',
       'redirect_uri':
-          '$serverURL/callbacks/kakao/sign_in',
+          '$serverURL/callbacks/kakao/login',
       'code': code['code'],
     });
     final tokenResult = await http.post(tokenUri);
