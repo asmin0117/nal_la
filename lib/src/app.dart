@@ -53,6 +53,14 @@ class App extends GetView<BottomController> {
             );
           }
 
+          if (snapshot.connectionState != ConnectionState.done) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.secondaryElement,
+              ),
+            );
+          }
+
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
                 //bottomNavigationBar: _bottomNavBarWidget(),
@@ -142,7 +150,11 @@ class App extends GetView<BottomController> {
                 // ),
                 );
           }
-          return CircularProgressIndicator();
+          return Center(
+            child: CircularProgressIndicator(
+              color: AppColors.secondaryElement,
+            ),
+          );
         });
   }
 }
