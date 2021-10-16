@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:nal_la/src/controller/appbar_controller.dart';
 import 'package:nal_la/src/pages/contract_detail.dart';
@@ -135,16 +136,28 @@ class _MyContractState extends State<MyContract> {
         labelPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
         tabs: <Widget>[
           Tab(
-            text: "진행중 계약",
+            child: Text(
+              "진행중 계약",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
           Tab(
-            text: "요청받은 계약",
+            child: Text(
+              "요청받은 계약",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
           Tab(
-            text: "요청한 계약",
+            child: Text(
+              "요청한 계약",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
           Tab(
-            text: "지난 계약",
+            child: Text(
+              "지난 계약",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
         ],
       ),
@@ -160,7 +173,9 @@ class _MyContractState extends State<MyContract> {
   }
 
   int _selectedFilter = 0;
-  List<String> _choices = ['최신순', '오래된순', '단가낮은순', '단가높은순', '장거리순', '단거리순'];
+  List<String> _choices = ['최신순', '오래된순', '단가낮은순', '단가높은순', '장거리순', '단거리순', ''];
+
+  bool isSelected = false;
 
   Widget choiceChips() {
     return Stack(
@@ -172,24 +187,31 @@ class _MyContractState extends State<MyContract> {
             child: ListView.builder(
               itemCount: _choices.length,
               shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  child: ChoiceChip(
-                    label: Text(_choices[index]),
-                    selected: _selectedFilter == index,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        _selectedFilter = selected ? index : 0;
-                      });
-                    },
-                    backgroundColor: Colors.transparent,
-                    shape: StadiumBorder(side: BorderSide()),
-                    labelStyle: TextStyle(color: AppColors.secondaryText),
-                  ),
-                  height: 60,
-                );
+                return Padding(
+                    padding: const EdgeInsets.only(right: 3, left: 3),
+                    child: Container(
+                      child: ChoiceChip(
+                        label: Text(
+                          _choices[index],
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        selected: _selectedFilter == index,
+                        onSelected: (bool isSelected) {
+                          setState(() {
+                            _selectedFilter = isSelected ? index : 0;
+                          });
+                        },
+                        backgroundColor: Colors.transparent,
+                        selectedColor: AppColors.secondaryElement,
+                        shape: StadiumBorder(
+                            side: BorderSide(color: AppColors.secondaryElement)),
+                        labelStyle: TextStyle(color: AppColors.accentText),
+                      ),
+                      height: 60,
+                    ));
               },
             ),
             // child: ListView.builder(
@@ -217,7 +239,7 @@ class _MyContractState extends State<MyContract> {
         SizedBox(),
         Positioned(
             right: 0,
-            top: 0,
+            top: 5,
             child: SizedBox(
               child: TextButton(
                 onPressed: () {},
@@ -232,7 +254,7 @@ class _MyContractState extends State<MyContract> {
                   backgroundColor: MaterialStateProperty.all(Colors.white),
                 ),
               ),
-              height: 50 ,
+              height: 50,
             )),
       ],
     );
@@ -422,6 +444,16 @@ class _MyContractState extends State<MyContract> {
                   _contractList(),
                   _contractList(),
                 ],
+              ),
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () {
+                  //TODO add contract 연결
+                  Get.toNamed("/add");
+                },
+                tooltip: "요청을 추가하려면 클릭하세요.",
+                label: Text("운송 요청"),
+                icon: Icon(Icons.pending_actions_rounded),
+                backgroundColor: AppColors.secondaryElement,
               ),
             )));
   }

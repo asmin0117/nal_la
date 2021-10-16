@@ -7,6 +7,7 @@ import 'package:nal_la/src/pages/contract_list.dart';
 import 'package:nal_la/src/pages/home.dart';
 import 'package:nal_la/src/pages/message.dart';
 import 'package:nal_la/src/pages/mycontract.dart';
+import 'package:nal_la/src/pages/mypage.dart';
 import 'package:nal_la/values/values.dart';
 
 class App extends GetView<BottomController> {
@@ -28,18 +29,18 @@ class App extends GetView<BottomController> {
 
   Widget _bottomNavBarWidget() {
     return Obx(() => BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: controller.currentIndex.value,
-            showUnselectedLabels: true,
-            selectedItemColor: AppColors.secondaryElement,
-            onTap: controller.changePageIndex,
-            items: [
-              _bottomNavigationBarItem("my", 20, "my계약"),
-              _bottomNavigationBarItem("list", 24, "요청목록"),
-              _bottomNavigationBarItem("community", 32, "커뮤니티"),
-              _bottomNavigationBarItem("message", 24, "메세지"),
-              _bottomNavigationBarItem("mypage", 22, "my계정"),
-            ]));
+        type: BottomNavigationBarType.fixed,
+        currentIndex: controller.currentIndex.value,
+        showUnselectedLabels: true,
+        selectedItemColor: AppColors.secondaryElement,
+        onTap: controller.changePageIndex,
+        items: [
+          _bottomNavigationBarItem("my", 20, "my계약"),
+          _bottomNavigationBarItem("list", 24, "요청목록"),
+          _bottomNavigationBarItem("community", 32, "커뮤니티"),
+          _bottomNavigationBarItem("message", 24, "메세지"),
+          _bottomNavigationBarItem("mypage", 22, "my계정"),
+        ]));
   }
 
   @override
@@ -63,9 +64,9 @@ class App extends GetView<BottomController> {
 
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
-                //bottomNavigationBar: _bottomNavBarWidget(),
-                //return Home();
-                // return Scaffold(
+              //bottomNavigationBar: _bottomNavBarWidget(),
+              //return Home();
+              // return Scaffold(
                 body: Obx(() {
                   switch (RouteName.values[controller.currentIndex.value]) {
                     case RouteName.MyContract:
@@ -81,74 +82,74 @@ class App extends GetView<BottomController> {
                       return Message();
                       break;
                     case RouteName.MyPage:
-                      return Home();
+                      return MyPage();
                       break;
                   }
                 }),
                 bottomNavigationBar: _bottomNavBarWidget()
-                // Obx(
-                //   () => BottomNavigationBar(
-                //     type: BottomNavigationBarType.fixed,
-                //     currentIndex: controller.currentIndex.value,
-                //     showUnselectedLabels: true,
-                //     selectedItemColor: Colors.black,
-                //     onTap: controller.changePageIndex,
-                //     //GetView 사용으로 간편화됨
-                //     items: [
-                //       BottomNavigationBarItem(
-                //           icon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           activeIcon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           label: "my계약"),
-                //       BottomNavigationBarItem(
-                //           icon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           activeIcon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           label: "계약요청"),
-                //       BottomNavigationBarItem(
-                //           icon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           activeIcon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           label: "커뮤니티"),
-                //       BottomNavigationBarItem(
-                //           icon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           activeIcon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           label: "메세지"),
-                //       BottomNavigationBarItem(
-                //           icon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           activeIcon: SvgPicture.asset(
-                //             "assets/svg/bell.svg",
-                //             width: 22,
-                //           ),
-                //           label: "my페이지"),
-                //     ],
-                //   ),
-                // ),
-                );
+              // Obx(
+              //   () => BottomNavigationBar(
+              //     type: BottomNavigationBarType.fixed,
+              //     currentIndex: controller.currentIndex.value,
+              //     showUnselectedLabels: true,
+              //     selectedItemColor: Colors.black,
+              //     onTap: controller.changePageIndex,
+              //     //GetView 사용으로 간편화됨
+              //     items: [
+              //       BottomNavigationBarItem(
+              //           icon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           activeIcon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           label: "my계약"),
+              //       BottomNavigationBarItem(
+              //           icon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           activeIcon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           label: "계약요청"),
+              //       BottomNavigationBarItem(
+              //           icon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           activeIcon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           label: "커뮤니티"),
+              //       BottomNavigationBarItem(
+              //           icon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           activeIcon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           label: "메세지"),
+              //       BottomNavigationBarItem(
+              //           icon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           activeIcon: SvgPicture.asset(
+              //             "assets/svg/bell.svg",
+              //             width: 22,
+              //           ),
+              //           label: "my페이지"),
+              //     ],
+              //   ),
+              // ),
+            );
           }
           return Center(
             child: CircularProgressIndicator(

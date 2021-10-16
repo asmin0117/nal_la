@@ -36,16 +36,22 @@ class _HomeState extends State<Home> {
                     child: Text("로그아웃"),
                   ),
                   TextButton(
+                      onPressed: () {
+                        Get.toNamed("/contractList");
+                      },
+                      child: Text("요청목록")),
+                  TextButton(
                     onPressed: () {
-                      Get.toNamed("/nameAuth");
+                      Get.toNamed(
+                          "/nameAuth/value?email=${snapshot.data!.displayName}");
                     },
                     child: Text("폰인증"),
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.toNamed("/contractList");
+                        Get.toNamed("/token");
                       },
-                      child: Text("요청목록"))
+                      child: Text("통신 확인"))
                 ],
               ),
             );

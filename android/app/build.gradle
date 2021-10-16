@@ -62,4 +62,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation "androidx.multidex:multidex:2.0.0"
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation 'com.github.bootpay:client_android_java:3.3.91'
 }

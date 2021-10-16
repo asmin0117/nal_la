@@ -15,6 +15,7 @@ class KakaoLoginController extends GetxController {
   Future<UserCredential?> signwithKakao() async {
     final clientState = Uuid().v4();
 
+
     final authUri = Uri.https("kauth.kakao.com", '/oauth/authorize', {
       'response_type': 'code',
       'client_id': '$kakaoRestAPIKey',
@@ -38,8 +39,8 @@ class KakaoLoginController extends GetxController {
     });
     final tokenResult = await http.post(tokenUri);
     Map<String, dynamic> accessToken = json.decode(tokenResult.body);
-    final response = await http.post(Uri.parse('$serverURL/callbacks/kakao/token'), body: {"accessToken": accessToken['access_token']});
 
+    final response = await http.post(Uri.parse('$serverURL/callbacks/kakao/token'), body: {"accessToken": accessToken['access_token']});
     return await FirebaseAuth.instance.signInWithCustomToken(response.body);
   }
 }
